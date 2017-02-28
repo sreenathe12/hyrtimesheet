@@ -29,6 +29,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("static"));
 
+
 app.use(session({
     secret: 'sreenathchandra', // session secret
     resave: true,
@@ -41,7 +42,6 @@ app.use(flash());
 
 app.use('/', require('./routes/router'));
 app.use('/', require('./routes/routeremp'));
-
 
 
 app.listen(port);

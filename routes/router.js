@@ -10,6 +10,8 @@ var Employee = require('../models/employees');
 var passport = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
 var generator = require('generate-password');
+var flash=require("connect-flash");
+router.use(flash());
 
 var passwords = generator.generate({
     length: 6,
@@ -26,13 +28,8 @@ router.get('/', function (req, res) {
 
 
 router.get('/login', function (req, res) {
-    res.render('login.ejs', {message: req.flash('loginMessage')});
+    res.render('login.ejs',{message: req.flash('loginMessage')});
 });
-
-// router.post('/login',function (req,res) {
-//     var email = req.body.email;
-//     var password = req.body.password;
-// });
 
 
 
@@ -54,7 +51,7 @@ passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField: 'email',
         passwordField: 'password',
-       //  passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+         passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
     function (req, email, password, done) {
         if (email)
@@ -83,10 +80,6 @@ passport.use('local-login', new LocalStrategy({
     }));
 
 
-
-
-
-
 router.post('/login', passport.authenticate('local-login', {
     successRedirect: '/profile', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
@@ -110,15 +103,6 @@ router.get('/empcreate', function (req, res) {
 
 
 
-
-
-// router.post('/empcreate', passport.authenticate('local-signup', {
-//     successRedirect : '/empcreated', // redirect to the secure profile section
-//     failureRedirect : '/empcreate', // redirect back to the signup page if there is an error
-//     failureFlash : true // allow flash messages
-// }));
-
-
 router.get('/empcreated', function (req, res) {
     res.render('empcreated.ejs', {message: req.flash('page not found')});
 });
@@ -131,4 +115,23 @@ router.get('/empcreated', function (req, res) {
 
 module.exports = router;
 
+
+
+
+
+
+
+
+
+
+// router.post('/empcreate', passport.authenticate('local-signup', {
+//     successRedirect : '/empcreated', // redirect to the secure profile section
+//     failureRedirect : '/empcreate', // redirect back to the signup page if there is an error
+//     failureFlash : true // allow flash messages
+// }));
+
+// router.post('/login',function (req,res) {
+//     var email = req.body.email;
+//     var password = req.body.password;
+// });
 
