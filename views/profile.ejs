@@ -4,12 +4,16 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="one.css">
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
     </style>
 </head>
 <body>
 <div class="container">
+    <div>
+        <p style="text-align:center;"><img src="hyrimage.png" alt="hym logo" /></p>
+    </div>
 
     <div class="page-header text-center">
         <h1>Admin Page</h1>
@@ -21,9 +25,8 @@
         <p>
             <strong>Login As:</strong>: <%= user.local.email %><br>
         </p>
-        <% } else { %>
-        <a href="/connect/local" class="btn btn-default">Connect Local</a>
         <% } %>
+
         <form action="/empcreate" method="get">
             <button  type="submit" class="btn btn-warning btn-lg"><span class="fa fa-sign-in"></span>Create Employee</button>
         </form>
@@ -33,3 +36,7 @@
 
 </body>
 </html>
+
+
+
+

@@ -87,51 +87,36 @@ router.post('/login', passport.authenticate('local-login', {
 }));
 
 
-router.get('/profile', function (req, res) {
-    res.render('profile.ejs', {
-        user: req.user
-    });
+router.get('/profile',isLoggedIn, function (req, res) {
+    res.render('profile.ejs');
 });
 
 
 
-
-router.get('/empcreate', function (req, res) {
+router.get('/empcreate',isLoggedIn,function (req, res) {
 
     res.render('empcreate.ejs', {message: req.flash('empMessage'),messagee: passwords});
 });
 
 
 
-router.get('/empcreated', function (req, res) {
+router.get('/empcreated',isLoggedIn, function (req, res) {
     res.render('empcreated.ejs', {message: req.flash('page not found')});
 });
 
+app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
 // ******************************************************EMPROUTER*******************
 
-
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect('/');
+}
 
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-// router.post('/empcreate', passport.authenticate('local-signup', {
-//     successRedirect : '/empcreated', // redirect to the secure profile section
-//     failureRedirect : '/empcreate', // redirect back to the signup page if there is an error
-//     failureFlash : true // allow flash messages
-// }));
-
-// router.post('/login',function (req,res) {
-//     var email = req.body.email;
-//     var password = req.body.password;
-// });
 

@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 // var bcrypt = require('bcrypt-nodejs');
-var timeScema = mongoose.Schema({
+var timeSchema = mongoose.Schema({
     timelocal : {
         name : String,
         startdate : Date,
@@ -11,4 +11,4 @@ var timeScema = mongoose.Schema({
         hours:Number,
     }
 });
-module.exports = mongoose.model('Timesheet',timeScema);
+module.exports = mongoose.model('Time',timeSchema);

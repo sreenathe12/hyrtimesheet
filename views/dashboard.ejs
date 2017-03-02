@@ -1,28 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Hyr Employee Login Page</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="one.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <style>
-        body         { padding-top:80px; }
+
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="col-sm-6 col-sm-offset-3">
-
-        <h1><span class="fa fa-sign-in"></span>Please enter the number of hours you worked this week</h1>
-
-
-        <!-- LOGIN FORM -->
-        <form action="/timesaved" method="post">
-
-
-            <button type="submit" class="btn btn-warning btn-lg">Save</button>
-        </form>
-
+<nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#">logout</a></li>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+            <h4>Logo</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#section1">Dashboard</a></li>
+
+
+                <li><a href="#section3">logout</a></li>
+            </ul><br>
+        </div>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <form method="post" action="/dashboard">
+                        <div class="form-group">
+                            <label class="control-label" for="date">Name</label>
+                            <input class="form-control" id="name" name="name" placeholder="Please Enter Your Name" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="date">Start Date</label>
+                            <input class="form-control" id="date" name="startdate" placeholder="MM/DD/YYY" type="date"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="date1">End Date</label>
+                            <input class="form-control" id="date1" name="enddate" placeholder="MM/DD/YYY" type="date"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Number of Hours</label>
+                            <input class="form-control"  name="hours" placeholder="Number of hours" type="number" min="0" max="1000"/>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary " name="submit" type="submit" onClick="processData()">Submit</button>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function processData(){
+                var v1=document.getElementById("date").value;
+                var v2=document.getElementById("date1").value;
+                if(v1>v2)
+                    alert("Start date cannot be exceed than end date");
+            }
+
+        </script>
+
 </body>
 </html>

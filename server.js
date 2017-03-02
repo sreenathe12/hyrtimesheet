@@ -11,7 +11,6 @@ var cookieParser = require('cookie-parser');
 var ejs = require('ejs');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://chandra:chandra@ds157509.mlab.com:57509/hyremployee');
-// mongoose.connect('mongodb://sreenath:sreenath@ds145355.mlab.com:45355/hyr_users');
 var db = mongoose.connection;
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
